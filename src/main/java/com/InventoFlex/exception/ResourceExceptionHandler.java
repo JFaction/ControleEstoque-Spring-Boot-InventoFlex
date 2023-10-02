@@ -14,6 +14,12 @@ public class ResourceExceptionHandler {
         ErrorResponse errorResponse = new ErrorResponse((ex.getMessage()));
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<ErrorResponse> constraintViolationException(ConstraintViolationException ex){
+        ErrorResponse errorResponse = new ErrorResponse((ex.getMessage()));
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<ErrorResponse> dataIntegrityViolationException(DataIntegrityViolationException ex){
         ErrorResponse errorResponse = new ErrorResponse(ex.getMessage());

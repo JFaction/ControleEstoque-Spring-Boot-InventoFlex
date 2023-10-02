@@ -1,16 +1,16 @@
 package com.InventoFlex.domain;
 
 import com.InventoFlex.dto.FornecedorDTO;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-@Entity(name = "fornecedores")
-@Table(name = "fornecedores")
+@Entity(name = "fornecedor")
+@Table(name = "fornecedor")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data

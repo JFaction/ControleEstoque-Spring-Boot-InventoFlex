@@ -2,7 +2,9 @@ package com.InventoFlex.service;
 
 import com.InventoFlex.domain.Categorias;
 import com.InventoFlex.dto.CategoriaDTO;
+import com.InventoFlex.exception.ConstraintViolationException;
 import com.InventoFlex.exception.ObjectNotFoundException;
+import com.InventoFlex.exception.UniqueConstraintViolationException;
 import com.InventoFlex.repository.CategoriasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,8 +27,12 @@ public class CategoriaService {
 
     public Categorias create(CategoriaDTO categoriaDTO){
         Categorias categoria = new Categorias(categoriaDTO);
-        Categorias newCategoria = categoriasRepository.save(categoria);
-        return newCategoria;
+        try{
+            Categorias newCategoria = categoriasRepository.save(categoria);
+            return newCategoria;
+        }catch(Exception ex){
+            throw new ConstraintViolationException(ex.toString());
+        }
     }
 
     public Categorias update(Integer id, CategoriaDTO categoriaDTO){
