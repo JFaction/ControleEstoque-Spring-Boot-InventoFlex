@@ -4,7 +4,7 @@ CREATE TABLE categorias (
     descricao VARCHAR(255)
 );
 
-CREATE TABLE fornecedor(
+CREATE TABLE fornecedor (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     cnpj VARCHAR(14) UNIQUE,
